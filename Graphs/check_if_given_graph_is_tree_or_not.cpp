@@ -1,38 +1,36 @@
 // https://www.geeksforgeeks.org/problems/is-it-a-tree/1
-
-bool isCyclic(int src, int prt, vector<vector<int>>&Vec, vector<bool> &visited)
-  {
-      visited[src]=true;
-      
-      for(auto i: Vec[src]){
-          if(!visited[i]){
-          if(isCyclic(i,src, Vec, visited))
-          
-              return true;
-          }
-          else if(i != prt)
-          {
-              return true;
-          }
-      }
-      return false;
-  }
-    int isTree(int n, int m, vector<vector<int>> &Vec) {
-        // code here
-        vector<bool> visited(n,false);
-        
-        int startingNode =0;
-        if (isCyclic(startingNode, -1, Vec, visited)) return false;
-    
-    
-    for(int u=0; u<n; u++){
-        
-        if(!visited[u])
+   bool dfs(int s, int par, vector<vector<int>> &adj, vector<int> &vis)
+    {
+        vis[s] = 1;
+        for(auto &it: adj[s])
         {
-            return 0;
-            
+            if(!vis[it])
+            {
+                if(!dfs(it, s, adj, vis))return false;
+            }
+            else if(it!=par)return false;
+        }
+        return true;
+    }
+    
+  public:
+    int isTree(int n, int m, vector<vector<int>> &g) {
+        vector<vector<int>> adj(n);
+        for(int i = 0; i<m; i++)
+        {
+            if(g[i][0] == g[i][1])return 0;
+            adj[g[i][0]].push_back(g[i][1]);
+            adj[g[i][1]].push_back(g[i][0]);
+        }
+        
+        vector<int> vis(n, 0);
+        
+        if(!dfs(0, 0, adj, vis))return 0;
+        
+        for(auto &it: vis)
+        {
+            if(it == 0)return 0;
         }
         
         return 1;
     }
-
