@@ -1,7 +1,7 @@
 # DSA Problems Solutions - Leetcode & GeeksforGeeks
 
 ## Introduction
-Welcome tomy DSA (Data Structures and Algorithms) Problems Solutions repository! This collection includes my solutions to coding challenges from Leetcode and GeeksforGeeks.
+Welcome to my DSA (Data Structures and Algorithms) Problems Solutions repository! This collection includes my solutions to coding challenges from Leetcode and GeeksforGeeks.
 
 ## How to Contribute
 Contributions are welcome and easy! If you have a solution for a problem not in the repository or an improvement, here's a step-by-step guide:
